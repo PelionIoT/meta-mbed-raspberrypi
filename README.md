@@ -5,7 +5,8 @@ The meta-mbed-raspberrypi layer contains mbed_sdcard_image-rpi-class
 that can be used to build an SD-card image capable of firmware update. In
 practice this means an image with additional partitions and u-boot bootloader.
 
-To use this layer, add following lines to your `local.conf`-file:
+To use this layer, use the supplied local.conf.sample or add following lines to
+your `local.conf`-file:
 ```
 MACHINE = "mbed-rpi3"
 KERNEL_IMAGETYPE="uImage"
