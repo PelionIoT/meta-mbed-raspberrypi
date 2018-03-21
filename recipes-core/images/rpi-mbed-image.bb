@@ -12,5 +12,6 @@ IMAGE_INSTALL += " \
 	util-linux-agetty \
 	util-linux \
 	rng-tools \
+	logrotate \
 	e2fsprogs"
 
