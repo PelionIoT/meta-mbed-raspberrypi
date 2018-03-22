@@ -1,6 +1,6 @@
 # Base this image on rpi-basic-image
 include recipes-core/images/rpi-hwup-image.bb
-include recipes-core/mount-images/mount-images.bb
+include recipes-core/mount-dirs/mount-dirs.bb
 
 LICENSE = "Apache-2.0"
 
