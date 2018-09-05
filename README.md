@@ -8,8 +8,7 @@ that can be used to build an SD-card image capable of firmware update through
 Mbed Cloud Client. In practice this means an image with additional partitions
 and `u-boot` bootloader.
 
-To use this layer, use the supplied `local.conf.sample` or add following lines to
-your `local.conf`-file:
+To use this layer, add following lines to your `local.conf`-file:
 
 ```
 MACHINE = "mbed-rpi3"
@@ -20,7 +19,7 @@ ENABLE_UART="1"
 
 # Dependencies
 
-The Mbed Edge on Raspberry Pi 3 is currently tested on top of the `morty`-version
+The Mbed Edge on Raspberry Pi 3 is currently tested on top of the `sumo`-version
 of the Yocto and with this layer. The following repositories are required to build
 an image with Raspberry Pi 3 support:
 
@@ -44,7 +43,7 @@ along with any other layers needed. e.g.:
   BBLAYERS ?= " \
     /path/to/yocto/meta \
     /path/to/yocto/meta-poky \
-    /path/to/yocto/meta-openembedded \
+    /path/to/yocto/meta-openembedded/meta-oe \
     /path/to/yocto/meta-raspberrypi
     /path/to/yocto/meta-mbed-raspberrypi \
     "
