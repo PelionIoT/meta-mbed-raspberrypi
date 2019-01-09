@@ -14,5 +14,6 @@ IMAGE_INSTALL += " \
 	rng-tools \
 	logrotate \
 	kernel-modules \
-	e2fsprogs"
+	e2fsprogs \
+	init-bluetooth"
 

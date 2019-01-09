@@ -17,6 +17,13 @@ KERNEL_IMAGETYPE="uImage"
 ENABLE_UART="1"
 ```
 
+To enable the bluetooth features, add following lines to your `local.conf`-file:
+
+```
+DISTRO_FEATURES_append += " bluetooth "
+CORE_IMAGE_EXTRA_INSTALL += " linux-firmware-bcm43430 linux-firmware-bcm43430a1-hcd "
+```
+
 # Dependencies
 
 The Mbed Edge on Raspberry Pi 3 is currently tested on top of the `sumo`-version
