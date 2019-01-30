@@ -12,7 +12,7 @@ To use this layer, add following lines to your `local.conf`-file:
 
 ```
 MACHINE = "mbed-rpi3"
-KERNEL_IMAGETYPE="uImage"
+RPI_USE_U_BOOT = "1"
 #ENABLE_UART is strictly not necessary, but can help with debugging issues.
 ENABLE_UART="1"
 ```
