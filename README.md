@@ -21,8 +21,10 @@ To enable the bluetooth features, add following lines to your `local.conf`-file:
 
 ```
 DISTRO_FEATURES_append += " bluetooth "
-CORE_IMAGE_EXTRA_INSTALL += " linux-firmware-bcm43430 linux-firmware-bcm43430a1-hcd "
+CORE_IMAGE_EXTRA_INSTALL += " ${MACHINE_EXTRA_RRECOMMENDS} "
 ```
+
+`${MACHINE_EXTRA_RRECOMMENDS}` contains the Broadcom firmware packages.
 
 # Dependencies
 

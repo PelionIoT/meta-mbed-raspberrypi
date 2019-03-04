@@ -1,0 +1,9 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+#  m  h  dom mon dow command
+   1  *     * * *    cd / && run-parts /etc/cron.hourly
+  30  7     * * *    cd / && run-parts /etc/cron.daily
+  42  7     * * 6    cd / && run-parts /etc/cron.weekly
+  55  7     1 * *    cd / && run-parts /etc/cron.monthly
+

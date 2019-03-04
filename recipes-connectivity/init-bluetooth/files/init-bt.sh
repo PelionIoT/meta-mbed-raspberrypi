@@ -21,28 +21,10 @@ start() {
     fi
 }
 
-stop() {
-    if [ -f $PIDFILE ]; then
-        PID=`cat $PIDFILE`
-        kill $PID
-        if [ "$?" -ne "0" ]; then
-            echo "init-pt kill failed"
-        else
-            echo "Killed init-pt $PID"
-        fi
-        rm -f $PIDFILE
-    else
-        echo "Pidfile not found"
-    fi
-}
-
 case "$1" in
     start)
         start
         ;;
-    stop)
-        stop
-        ;;
     *)
-    echo "Usage: $0 {start|stop}"
+    echo "Usage: $0 {start}"
 esac

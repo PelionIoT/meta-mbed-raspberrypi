@@ -31,7 +31,7 @@ BOOT_SPACE ?= "40960"
 # Size of other non-rootfilesystem partitions
 BOOTFLAGS_SIZE="20480"
 CONFIG_SIZE="40960"
-CACHE_SIZE="204800"
+CACHE_SIZE="$(expr ${ROOTFS_SIZE} + ${ROOTFS_SIZE} / 2)"
 
 # Set alignment to 4MB [in KiB]
 IMAGE_ROOTFS_ALIGNMENT = "4096"
