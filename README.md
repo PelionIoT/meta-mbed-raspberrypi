@@ -15,6 +15,13 @@ MACHINE = "mbed-rpi3"
 RPI_USE_U_BOOT = "1"
 #ENABLE_UART is strictly not necessary, but can help with debugging issues.
 ENABLE_UART="1"
+
+#Mbed Edge and protocol translator examples use systemd, it is enabled with these
+DISTRO_FEATURES_append = " systemd"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+VIRTUAL-RUNTIME_initscripts = ""
+IMAGE_INSTALL_append = " connman"
 ```
 
 To enable the bluetooth features, add following lines to your `local.conf`-file:
