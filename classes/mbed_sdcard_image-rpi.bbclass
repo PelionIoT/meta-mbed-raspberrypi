@@ -242,16 +242,20 @@ ROOTFS_POSTPROCESS_COMMAND += " rpi_generate_sysctl_config ; "
 rpi_generate_sysctl_config() {
 	# systemd sysctl config
 	test -d ${IMAGE_ROOTFS}${sysconfdir}/sysctl.d && \
-				echo "kernel.core_uses_pid = 1" >> ${IMAGE_ROOTFS}${sysconfdir}/sysctl.d/rpi-vm.conf && \
-				echo "kernel.core_pattern = /var/log/core" >> ${IMAGE_ROOTFS}${sysconfdir}/sysctl.d/rpi-vm.conf
+		echo "kernel.core_uses_pid = 1" >> ${IMAGE_ROOTFS}${sysconfdir}/sysctl.d/rpi-vm.conf && \
+		echo "kernel.core_pattern = /var/log/core" >> ${IMAGE_ROOTFS}${sysconfdir}/sysctl.d/rpi-vm.conf && \
+		echo "vm.min_free_kbytes = 8192" > ${IMAGE_ROOTFS}${sysconfdir}/sysctl.d/rpi-vm.conf
 
 	# sysv sysctl config
 	IMAGE_SYSCTL_CONF="${IMAGE_ROOTFS}${sysconfdir}/sysctl.conf"
 	test -e ${IMAGE_ROOTFS}${sysconfdir}/sysctl.conf && \
-				sed -e "/kernel.core_uses_pid/d" -i ${IMAGE_SYSCTL_CONF}
+		sed -e "/kernel.core_uses_pid/d" -i ${IMAGE_SYSCTL_CONF}
 		echo "" >> ${IMAGE_SYSCTL_CONF} && echo "kernel.core_uses_pid = 1" >> ${IMAGE_SYSCTL_CONF}
 
 	test -e ${IMAGE_ROOTFS}${sysconfdir}/sysctl.conf && \
-				sed -e "/kernel.core_pattern/d" -i ${IMAGE_SYSCTL_CONF}
-		echo "" >> ${IMAGE_SYSCTL_CONF} && echo "kernel.core_pattern = /var/log/core" >> ${IMAGE_SYSCTL_CONF}
+		sed -e "/kernel.core_pattern/d" -i ${IMAGE_SYSCTL_CONF} && \
+		sed -e "/vm.min_free_kbytes/d" -i ${IMAGE_SYSCTL_CONF}
+
+	echo "" >> ${IMAGE_SYSCTL_CONF} && echo "kernel.core_pattern = /var/log/core" >> ${IMAGE_SYSCTL_CONF}
+	echo "" >> ${IMAGE_SYSCTL_CONF} && echo "vm.min_free_kbytes = 8192" >> ${IMAGE_SYSCTL_CONF}
 }

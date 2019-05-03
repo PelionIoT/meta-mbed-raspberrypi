@@ -1,0 +1,12 @@
+[Unit]
+Description=RFKill - Unblock All Devices
+After=bluetooth.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/rfkill unblock all
+ExecStop=
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,6 +1,5 @@
 # Base this image on rpi-basic-image
-include recipes-core/images/core-image-minimal.bb
-include recipes-core/mount-dirs/mount-dirs.bb
+include recipes-core/images/rpi-mbed-core-image.bb
 
 LICENSE = "Apache-2.0"
 
@@ -8,12 +7,7 @@ MACHINE = "raspberrypi3"
 
 # Include modules in rootfs
 IMAGE_INSTALL += " \
-	u-boot-fw-utils \
-	util-linux-agetty \
-	util-linux \
-	rng-tools \
-	logrotate \
-	kernel-modules \
-	e2fsprogs \
 	init-bluetooth"
 
+IMAGE_INSTALL_append = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', ' rfkill-unblock', '', d)}"
+IMAGE_INSTALL_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'init-bluetooth', '', d)}"
